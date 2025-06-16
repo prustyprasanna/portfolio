@@ -1,0 +1,51 @@
+
+
+{% load static %}
+
+{% block title %}Skills Assessment - DevConnect{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/skills.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="assessment-section">
+    <div class="container">
+        <h1 class="section-title">Skills Assessment</h1>
+        
+        <div class="assessment-grid">
+            <!-- Available Skills -->
+            <div class="skills-list">
+                <h2>Available Assessments</h2>
+                {% for skill in skills %}
+                <div class="skill-card">
+                    <h3>{{ skill.name }}</h3>
+                    <p>Category: {{ skill.category }}</p>
+                    <button class="start-assessment" data-skill-id="{{ skill.id }}">
+                        Start Assessment
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Completed Assessments -->
+            <div class="completed-assessments">
+                <h2>Your Results</h2>
+                {% for assessment in completed_assessments %}
+                <div class="result-card">
+                    <h3>{{ assessment.skill.name }}</h3>
+                    <div class="score">Score: {{ assessment.score }}%</div>
+                    <div class="completion-date">
+                        Completed: {{ assessment.completed_date|date:"M d, Y" }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/skills.js' %}"></script>
+{% endblock %}

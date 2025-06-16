@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DevConnect{% endblock %}</title>
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="{% url 'myportfolio:home' %}" class="logo">DevConnect</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-links">
+                    <a href="{% url 'myportfolio:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+                    <a href="{% url 'myportfolio:developers' %}" class="nav-link {% if request.resolver_match.url_name == 'developers' %}active{% endif %}">Developers</a>
+                    <a href="{% url 'myportfolio:companies' %}" class="nav-link {% if request.resolver_match.url_name == 'companies' %}active{% endif %}">Companies</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'myportfolio:intro' %}" class="nav-link {% if request.resolver_match.url_name == 'intro' %}active{% endif %}">Create Portfolio</a>
+                        <a href="{% url 'myportfolio:skills_assessment' %}" class="nav-link {% if request.resolver_match.url_name == 'skills_assessment' %}active{% endif %}">Skills</a>
+                    {% endif %}
+                    <a href="{% url 'myportfolio:about' %}" class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
+                </div>
+
+                <!-- Auth Links -->
+                <div class="auth-links">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'myportfolio:user_profile' %}" class="nav-link">Profile</a>
+                        <a href="{% url 'myportfolio:logout' %}" class="nav-link">Logout</a>
+                    {% else %}
+                        <a href="{% url 'myportfolio:login' %}" class="nav-link">Login</a>
+                        <a href="{% url 'myportfolio:register' %}" class="nav-link">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+            <button class="close-message">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-title">For Developers</h3>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'myportfolio:intro' %}">Create Portfolio</a></li>
+                        <li><a href="{% url 'myportfolio:companies' %}">Find Projects</a></li>
+                        <li><a href="{% url 'myportfolio:skills_assessment' %}">Skill Assessment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">For Companies</h3>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'myportfolio:company_register' %}">Register Company</a></li>
+                        <li><a href="{% url 'myportfolio:developers' %}">Find Developers</a></li>
+                        <li><a href="{% url 'myportfolio:company_post' %}">Post Project</a></li>
+                    </ul>
+                </div>
+                <!-- Move About Us beside Resources -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'myportfolio:about' %}">About Us</a></li>
+                        <li><a href="{% url 'myportfolio:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- New social links section -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/devconnect" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/devconnect" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/devconnect" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/devconnect" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {% now "Y" %} DevConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,159 @@
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - DevConnect</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="logo">DevConnect</div>
+                <div class="nav-links">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Services</a>
+                    <a href="#" class="nav-link">About Us</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="{% url 'myportfolio:login' %}" class="btn btn-primary">
+                        <i class="fas fa-user"></i>
+                        Login
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+            <div class="mobile-nav" id="mobileNav">
+                <a href="#" class="mobile-nav-link">Home</a>
+                <a href="#" class="mobile-nav-link">Services</a>
+                <a href="#" class="mobile-nav-link">About Us</a>
+                <a href="#" class="mobile-nav-link">Contact</a>
+                <div class="mobile-nav-buttons">
+                    <button class="btn btn-outline mobile-btn">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h1 class="section-title">Contact Us</h1>
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form method="POST" class="contact-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>support@devconnect.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Tech Street<br>Silicon Valley, CA 94025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Footer -->
+ <footer class="footer">
+    <div class="footer-container">
+        <!-- Footer Top -->
+        <div class="footer-grid">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <span class="logo">Dev<span class="highlight">Connect</span></span>
+                </div>
+                <p class="footer-description">
+                    Connecting top developers with innovative companies worldwide. Find your next opportunity or perfect hire with DevConnect.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 class="footer-title">For Developers</h3>
+                <ul class="footer-links">
+                    <li><a href="../intro">Create Portfolio</a></li>
+                    <li><a href="../companies">Find Projects</a></li>
+                    <li><a href="#">Developer Community</a></li>
+                    <li><a href="#">Skill Assessment</a></li>
+                </ul>
+            </div>
+
+            <!-- Company Links -->
+            <div class="footer-section">
+                <h3 class="footer-title">For Companies</h3>
+                <ul class="footer-links">
+                    <li><a href="../company/post">Post a Job</a></li>
+                    <li><a href="#">Browse Developers</a></li>
+                    <li><a href="#">Recruitment Solutions</a></li>
+                    <li><a href="../pricing">Enterprise Plans</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="footer-section">
+                <h3 class="footer-title">Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <!-- Add About Us here -->
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+    {% block extra_js %}
+    <script src="{% static 'js/main.js' %}"></script>
+    {% endblock %}
+</body>
+</html>
+{% endblock %}

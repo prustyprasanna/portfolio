@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - DevConnect{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-container">
+            <h1 class="about-title">Connecting Talent with Opportunity</h1>
+            <p class="about-subtitle">Building the future of tech recruitment, one connection at a time.</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <p>DevConnect aims to revolutionize how companies and developers connect, making the hiring process more efficient, transparent, and successful for everyone involved.</p>
+                    <div class="stats-container">
+                        <!-- Stats Items -->
+                        {% include "components/stats.html" %}
+                    </div>
+                </div>
+                <div class="mission-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzJDMkUzMyIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIj5Db25uZWN0aW5nIFRhbGVudCB3aXRoIE9wcG9ydHVuaXR5PC90ZXh0Pjwvc3ZnPg==" 
+                         alt="DevConnect Mission"
+                         class="mission-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Leadership Team</h2>
+            <div class="team-grid">
+                <!-- Team Members -->
+                {% include "components/team_members.html" %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

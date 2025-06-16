@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="community-section">
+    <div class="container">
+        <h1 class="section-title">Developer Community</h1>
+        
+        <div class="community-grid">
+            <!-- Forums Section -->
+            <div class="community-card">
+                <h2>Discussion Forums</h2>
+                <ul class="forum-list">
+                    <li>Web Development</li>
+                    <li>Mobile Development</li>
+                    <li>Data Science</li>
+                    <li>DevOps</li>
+                </ul>
+            </div>
+
+            <!-- Events Section -->
+            <div class="community-card">
+                <h2>Upcoming Events</h2>
+                <div class="event-list">
+                    <div class="event-item">
+                        <h3>Tech Meetup</h3>
+                        <p>Join us for our monthly tech meetup!</p>
+                        <span class="event-date">June 20, 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="community-card">
+                <h2>Learning Resources</h2>
+                <ul class="resource-list">
+                    <li>Tutorial Library</li>
+                    <li>Code Samples</li>
+                    <li>Best Practices</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
